@@ -143,7 +143,7 @@ print(vgg16_model)
 from sklearn.model_selection import KFold
 from torch.utils.data import ConcatDataset, SubsetRandomSampler
 
-def train_model(model, train_dataset, optimizer, criterion, num_epochs=120, k_folds=5):
+def train_model(model, train_dataset, optimizer, criterion, num_epochs=100, k_folds=5):
 
   kfold = KFold(n_splits=k_folds, shuffle=True)
 
@@ -164,7 +164,7 @@ def train_model(model, train_dataset, optimizer, criterion, num_epochs=120, k_fo
     val_sampler = SubsetRandomSampler([i for i in val_ids])
 
     # Create DataLoaders
-    train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     val_loader = DataLoader(train_dataset, batch_size=64, shuffle=False)
 
     for epoch in range(num_epochs):
